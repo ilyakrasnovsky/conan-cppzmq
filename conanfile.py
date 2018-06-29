@@ -19,6 +19,9 @@ class CppZmqConan(ConanFile):
     source_subfolder = "source_subfolder"
     build_subfolder = "build_subfolder"
 
+    def configure(self):
+        self.options['zmq'].encryption = None
+    
     def requirements(self):
         self.requires.add('zmq/4.2.2@ikrasnovsky/stable')
 

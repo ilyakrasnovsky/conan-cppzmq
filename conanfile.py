@@ -23,7 +23,7 @@ class CppZmqConan(ConanFile):
         self.options['zmq'].encryption = None
     
     def requirements(self):
-        self.requires.add('zmq/4.2.2@ikrasnovsky/stable')
+        self.requires.add('zmq/4.2.2@bincrafters/stable')
 
     def source(self):
         source_url = "https://github.com/zeromq/cppzmq"

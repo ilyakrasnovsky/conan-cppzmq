@@ -7,7 +7,7 @@ import os
 
 class CppZmqConan(ConanFile):
     name = "cppzmq"
-    version = "4.2.2"
+    version = "4.3.0"
     url = "https://github.com/bincrafters/conan-cppzmq"
     description = "C++ binding for 0MQ"
     license = "MIT"
@@ -19,8 +19,11 @@ class CppZmqConan(ConanFile):
     source_subfolder = "source_subfolder"
     build_subfolder = "build_subfolder"
 
+    def configure(self):
+        self.options["zmq"].encryption = None
+
     def requirements(self):
-        self.requires.add('zmq/4.2.2@bincrafters/stable')
+        self.requires.add('zmq/4.2.4@bincrafters/stable')
 
     def source(self):
         source_url = "https://github.com/zeromq/cppzmq"

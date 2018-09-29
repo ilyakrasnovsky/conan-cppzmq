@@ -19,6 +19,17 @@ class CppZmqConan(ConanFile):
     source_subfolder = "source_subfolder"
     build_subfolder = "build_subfolder"
 
+    def configure(self):
+        """
+        Configure prior to build.
+        """
+
+        # our linux version does not support conan-libsodium,
+        # so we skip encryption until we build libsodium with HAVE_EXPLICIT_BZERO
+        # not defined, or safely upgrade the glibc version on our target linux environment to > 2.23
+        if (self.settings.os == "Linux"):
+            self.options["zmq"].encryption = None
+
     def requirements(self):
         self.requires.add('zmq/4.2.4@idt/testing')
 
